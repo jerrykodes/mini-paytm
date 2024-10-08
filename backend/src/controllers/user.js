@@ -33,18 +33,25 @@ const searchUsersController = async (req, res) => {
 
 		const users = await User.find(
 			{
-				$or: [
+				$and: [
 					{
-						firstName: {
-							$regex: filter,
-							$options: 'i',
-						},
+						$or: [
+							{
+								firstName: {
+									$regex: filter,
+									$options: 'i',
+								},
+							},
+							{
+								lastName: {
+									$regex: filter,
+									$options: 'i',
+								},
+							},
+						],
 					},
 					{
-						lastName: {
-							$regex: filter,
-							$options: 'i',
-						},
+						_id: { $ne: req.userId },
 					},
 				],
 			},
