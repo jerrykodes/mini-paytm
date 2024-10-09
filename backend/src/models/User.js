@@ -19,12 +19,14 @@ const userSchema = new Schema(
 		firstName: {
 			type: String,
 			required: true,
+			lowercase: true,
 			trim: true,
 			maxLength: 50,
 		},
 		lastName: {
 			type: String,
 			required: true,
+			lowercase: true,
 			trim: true,
 			maxLength: 50,
 		},

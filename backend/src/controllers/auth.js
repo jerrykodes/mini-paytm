@@ -1,6 +1,7 @@
 const { z } = require('zod')
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
+const Account = require('../models/Account')
 
 const loginSchema = z.object({
 	email: z.string().email(),
@@ -65,6 +66,12 @@ const registerController = async (req, res) => {
 		})
 
 		const user = await newUser.save()
+
+		await Account.create({
+			userId: user._id,
+			balance: 1 + Math.floor(Math.random() * 10000),
+		})
+
 		const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET)
 
 		res.status(201).json({
