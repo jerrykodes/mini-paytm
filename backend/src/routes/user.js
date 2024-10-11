@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const {
-	updateUserController,
-	searchUsersController,
+  updateUserController,
+  searchUsersController,
 } = require('../controllers/user')
 
 const router = Router()
