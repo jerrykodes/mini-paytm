@@ -1,7 +1,11 @@
 const { Router } = require('express')
-const { getBalanceController } = require('../controllers/account')
+const {
+  getBalanceController,
+  transferBalanceController,
+} = require('../controllers/account')
 const router = Router()
 
-router.get('/', getBalanceController)
+router.get('/balance', getBalanceController)
+router.post('/transfer', transferBalanceController)
 
 module.exports = router
