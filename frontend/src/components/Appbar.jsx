@@ -1,13 +1,13 @@
 export const Appbar = () => {
-	return (
-		<div className='shadow h-14 flex justify-between'>
-			<div className='flex flex-col justify-center h-full ml-4'>PayTM App</div>
-			<div className='flex'>
-				<div className='flex flex-col justify-center h-full mr-4'>Hello</div>
-				<div className='rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2'>
-					<div className='flex flex-col justify-center h-full text-xl'>U</div>
-				</div>
-			</div>
-		</div>
-	)
+  return (
+    <div className="flex h-14 justify-between shadow">
+      <div className="ml-4 flex h-full flex-col justify-center">PayTM App</div>
+      <div className="flex">
+        <div className="mr-4 flex h-full flex-col justify-center">Hello</div>
+        <div className="mr-2 mt-1 flex h-12 w-12 justify-center rounded-full bg-slate-200">
+          <div className="flex h-full flex-col justify-center text-xl">U</div>
+        </div>
+      </div>
+    </div>
+  )
 }

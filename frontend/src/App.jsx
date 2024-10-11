@@ -9,18 +9,18 @@ import SendMoney from './pages/SendMoney'
 import Navbar from './Navbar'
 
 export default function App() {
-	return (
-		<>
-			<BrowserRouter>
-				<Navbar />
-				<Routes>
-					<Route path='/' index element={<Home />} />
-					<Route path='/register' element={<Register />} />
-					<Route path='/login' element={<Login />} />
-					<Route path='/dashboard' element={<Dashboard />} />
-					<Route path='/send' element={<SendMoney />} />
-				</Routes>
-			</BrowserRouter>
-		</>
-	)
+  return (
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" index element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/send" element={<SendMoney />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
