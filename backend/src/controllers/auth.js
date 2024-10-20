@@ -11,7 +11,7 @@ const loginSchema = z.object({
 const loginController = async (req, res) => {
   try {
     const { email, password } = loginSchema.parse(req.body)
-    const user = await User.findOne({ email, password })
+    const user = await User.findOne({ email, password }).select('-password -__v -createdAt -updatedAt')
 
     if (!user) {
       return res.status(411).json({
@@ -25,6 +25,7 @@ const loginController = async (req, res) => {
     res.status(200).json({
       type: 'success',
       message: 'User Logged in successfully',
+      user,
       token,
     })
   } catch (error) {
