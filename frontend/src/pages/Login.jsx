@@ -4,8 +4,8 @@ import ErrorMessage from '../components/forms/ErrorMessage'
 import useAuthContext from '../hooks/useAuthContext'
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('mark.freeman@test.com')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('jane.austin@test.com')
+  const [password, setPassword] = useState('123456')
   const { loginUser, isLoading, error } = useAuthContext()
   const navigate = useNavigate()
 

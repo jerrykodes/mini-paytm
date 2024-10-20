@@ -13,15 +13,17 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <Navbar />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/send" element={<SendMoney />} />
-          </Route>
-        </Routes>
+        <main className="p-5 md:mt-10">
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/send" element={<SendMoney />} />
+            </Route>
+          </Routes>
+        </main>
       </AuthProvider>
     </BrowserRouter>
   )
