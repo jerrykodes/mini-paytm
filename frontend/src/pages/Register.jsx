@@ -4,8 +4,8 @@ import ErrorMessage from '../components/forms/ErrorMessage'
 import useAuthContext from '../hooks/useAuthContext'
 
 export default function RegisterForm() {
-  const [firstname, setFirstname] = useState('')
-  const [lastname, setLastname] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { registerUser, isLoading, error } = useAuthContext()
@@ -14,13 +14,13 @@ export default function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!firstname || !lastname || !email || !password) {
+    if (!firstName || !lastName || !email || !password) {
       return
     }
 
     const registered = await registerUser({
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
       password,
     })
@@ -43,17 +43,17 @@ export default function RegisterForm() {
       <div className="mb-4">
         <label
           className="mb-2 block text-sm font-bold text-gray-700"
-          htmlFor="firstname"
+          htmlFor="firstName"
         >
           First Name
         </label>
         <input
           className="input input-bordered w-full"
-          id="firstname"
+          id="firstName"
           type="text"
           placeholder="Enter your first name"
-          value={firstname}
-          onChange={(e) => setFirstname(e.target.value)}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
           required
         />
       </div>
@@ -62,17 +62,17 @@ export default function RegisterForm() {
       <div className="mb-4">
         <label
           className="mb-2 block text-sm font-bold text-gray-700"
-          htmlFor="lastname"
+          htmlFor="lastName"
         >
           Last Name
         </label>
         <input
           className="input input-bordered w-full"
-          id="lastname"
+          id="lastName"
           type="text"
           placeholder="Enter your last name"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           required
         />
       </div>

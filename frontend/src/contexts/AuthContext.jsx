@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.user)
 
       localStorage.setItem('token', res.data.token)
-      localStorage.setItem('user', res.data.user)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
 
       return res.data.type === 'success'
     } catch (error) {
@@ -36,7 +36,30 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  const registerUser = async () => {}
+  const registerUser = async ({ firstName, lastName, email, password }) => {
+    try {
+      setIsLoading(true)
+      setError(null)
+
+      const res = await axiosInstance.post('/auth/register', {
+        firstName,
+        lastName,
+        email,
+        password,
+      })
+
+      setUser(res.data.user)
+
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+
+      return res.data.type === 'success'
+    } catch (error) {
+      setError('Error while registering user!!!')
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const logoutUser = async () => {
     setIsLoading(true)
