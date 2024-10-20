@@ -5,6 +5,9 @@ const initialState = {
   user: null,
   isLoading: false,
   error: '',
+  loginUser: async () => {},
+  registerUser: async () => {},
+  logoutUser: async () => {},
 }
 
 export const AuthContext = createContext(initialState)
@@ -14,14 +17,18 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const signin = async (email, password) => {
+  const loginUser = async ({ email, password }) => {
     try {
       setIsLoading(true)
       setError(null)
 
       const res = await axiosInstance.post('/auth/login', { email, password })
       setUser(res.data.user)
+
       localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', res.data.user)
+
+      return res.data.type === 'success'
     } catch (error) {
       setError('Error while logging in!!!')
     } finally {
@@ -29,9 +36,9 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  const signup = async () => {}
+  const registerUser = async () => {}
 
-  const logout = async () => {
+  const logoutUser = async () => {
     setIsLoading(true)
     setError(null)
     setUser(null)
@@ -40,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isLoading, error, signin, signup, logout }}
+      value={{ user, isLoading, error, loginUser, registerUser, logoutUser }}
     >
       {children}
     </AuthContext.Provider>
